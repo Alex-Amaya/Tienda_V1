@@ -12,34 +12,37 @@ import lombok.Data;
 
 @Data // Especificar que es una capa de datos
 @Entity // Esta clase esta enlazada a una tabla en la base de datos
-@Table(name = "categoria") // Especificar cual entidad
+@Table(name = "producto") // Especificar cual entidad
 
-public class Categoria {
+public class Producto {
 
   private static final long serialVersionUID = 1L; // autoincremento en Java MySQL(AUTO_INCREMENT)
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "idcategoria")
+  @Column(name = "idproducto")
 
-  private Long idcategoria;
-  private String descripcion;
+  private Long idproducto;
+  private String detalle;
+  private int existencias;
+  private String descripcion;  
   private String rutaimagen;
   private boolean activo;
 
+  //private long idCategoria;
+  
   @ManyToOne
   @JoinColumn(name = "id_categoria", updatable=false)
-  Categoria categoria;
-
-  public Categoria() {
+  Categoria categoria;  
+  public Producto() {
   }
 
-  public Categoria(String categoria, boolean activo) {
-    this.descripcion = categoria;
+  public Producto(String producto, boolean activo) {
+    this.descripcion = producto;
     this.activo = activo;
   }
 
-    public Long getIdCategoria() {
+    public Long getIdProducto() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
